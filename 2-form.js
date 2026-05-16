@@ -1,0 +1,2 @@
+import"./assets/modulepreload-polyfill-B5Qt9EMX.js";/* empty css                      */const e=document.querySelector(".feedback-form"),l=e.elements.email,a=e.elements.message,o="message";a.value=localStorage.getItem(o)??"";e.addEventListener("input",t=>{localStorage.setItem(o,t.target.value)});e.addEventListener("submit",t=>{t.preventDefault(),console.log("email:",l.value),console.log("message:",a.value),localStorage.removeItem(o),e.reset()});
+//# sourceMappingURL=2-form.js.map
