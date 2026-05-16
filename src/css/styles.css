@@ -13,3 +13,7 @@
 /* Sections style */
 @import url('./header.css');
 @import url('./back-link.css');
+@import url('./gallery.css');
+
+/* Додатковий імпорт стилів */
+ @import url("simplelightbox/dist/simple-lightbox.min.css");
