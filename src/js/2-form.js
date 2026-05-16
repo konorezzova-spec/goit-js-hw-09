@@ -1,8 +1,9 @@
 const form = document.querySelector('.feedback-form');
 const emailInput = form.elements.email;
 const messageInput = form.elements.message;
-const key = 'message';
+const key = 'feedback-form-state';
 
+emailInput.value = localStorage.getItem(key) ?? '';
 messageInput.value = localStorage.getItem(key) ?? '';
 
 form.addEventListener('input', (evt) => {
