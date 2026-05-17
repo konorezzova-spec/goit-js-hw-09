@@ -1,3 +1,5 @@
+import SimpleLightbox from "simplelightbox";
+
 const images = [
     {
      preview:
@@ -82,8 +84,6 @@ const galleryMarkup = images.map(({ preview, original, description }) => {
 galleryContainer.insertAdjacentHTML('afterbegin', galleryMarkup);
 
 // Опрацьовуємо клік на зображеннях галереї
-
-import SimpleLightbox from "simplelightbox";
 
 new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
