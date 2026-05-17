@@ -85,7 +85,7 @@ galleryContainer.insertAdjacentHTML('afterbegin', galleryMarkup);
 
 import SimpleLightbox from "simplelightbox";
 
-new SimpleLightbox('.gallery-item a', {
+new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
  });
