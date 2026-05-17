@@ -3,19 +3,24 @@ const formEmail = form.elements.email;
 const formMessage = form.elements.message;
 const key = 'feedback-form-state';
 const formData = new FormData();
+const formDataObj = {
+    email: formData.get('email') || '',
+    message: formData.get('message') || '',
+};
+const savedData = localStorage.getItem(key);
 
-if (localStorage.getItem(key) !== null) {
-    formData.append('email', JSON.parse(localStorage.getItem(key)).email);
-    formData.append('message', JSON.parse(localStorage.getItem(key)).message);
-    formEmail.value = formData.get('email');
-    formMessage.value = formData.get('message');
+if (savedData !== null) {
+    formDataObj.email = JSON.parse(savedData).email;
+    formDataObj.message = JSON.parse(savedData).message;
+    formEmail.value = formDataObj.email;
+    formMessage.value = formDataObj.message;
 }
 
 form.addEventListener('input', () => {
-    formData.set('email', formEmail.value.trim());
-    formData.set('message', formMessage.value.trim());
+    formDataObj.email = formEmail.value.trim();
+    formDataObj.message = formMessage.value.trim();
     
-    localStorage.setItem(key, JSON.stringify(Object.fromEntries(formData.entries())));
+    localStorage.setItem(key, JSON.stringify(formDataObj));
 })
 
 form.addEventListener('submit', (evt) => {
@@ -24,10 +29,10 @@ form.addEventListener('submit', (evt) => {
         alert('Please fill in all the fields!');
         return;
     }
-    const formData = new FormData(form);
-    console.log(`formData:`, Object.fromEntries(formData.entries()));
-    formData.delete('email');
-    formData.delete('message');
+    console.log(`formDataObj:`, formDataObj);
+    // Clear form and localStorage
+    formDataObj.email = '';
+    formDataObj.message = '';
     localStorage.removeItem(key);
     form.reset();
 });
