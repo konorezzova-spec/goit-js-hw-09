@@ -2,11 +2,6 @@ const form = document.querySelector('.feedback-form');
 const formEmail = form.elements.email;
 const formMessage = form.elements.message;
 const key = 'feedback-form-state';
-const inputs = new FormData(form);
-const dataForm = {
-    email: inputs.get('email').trim(),
-    message: inputs.get('message').trim(),
-};
 
 if (localStorage.getItem(key) !== null) {
     const getData = JSON.parse(localStorage.getItem(key));
@@ -15,6 +10,11 @@ if (localStorage.getItem(key) !== null) {
 } 
 
 form.addEventListener('input', () => {
+    const inputs = new FormData(form);
+    const dataForm = {
+        email: inputs.get('email').trim(),
+        message: inputs.get('message').trim(),
+    };
     localStorage.setItem(key, JSON.stringify(dataForm));
 })
 
