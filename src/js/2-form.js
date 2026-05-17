@@ -3,10 +3,9 @@ const formEmail = form.elements.email;
 const formMessage = form.elements.message;
 const key = 'feedback-form-state';
 
-const formDataObj = new FormData(form);
 const formData = {
-    email: formDataObj.get('email') || '',
-    message: formDataObj.get('message') || '',
+    email: '',
+    message: '',
 };
 
 const savedData = localStorage.getItem(key);
